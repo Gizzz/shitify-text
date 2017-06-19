@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Shitify - make your text look like a shit easily</h1>
+
+	<p>
+		<i>Переводчикам пиратских игр PlayStation One на русский - посвящается...</i>
+	</p>
+
+	input: <br>
+	<textarea id="input" cols="90" rows="10" autofocus>
+нажми старт
+идет загрузка
+отдохни
+читаю карту памяти
+	</textarea>
+
+	<br><br>
+
+	output: <br>
+	<textarea id="output" readonly cols="90" rows="10"></textarea>
+
+	<p>Note: currently this works with cyrillic symbols only.</p>
+
+	<div style="position: absolute; bottom: 10px; width: 99%; text-align: center;">
+		Copyright © 2017 Shitify Inc.
+	</div>
+
+	<script>
+		const inputControl = document.getElementById("input");
+		const outputControl = document.getElementById("output");
+
+		outputControl.textContent = translateString(inputControl.textContent);
+
+		inputControl.addEventListener("input", (e) => {
+			const inputText = e.target.value;
+			outputControl.textContent = translateString(inputText);
+		});
+
+		function translateString(inputString) {
+			const arrayOfChars = [];
+
+			for (let i = 0; i < inputString.length; i++) {
+				const nextChar = translateChar(inputString[i]);
+				arrayOfChars.push(nextChar);
+			}
+
+			return arrayOfChars.join("");
+		}
+
+		function translateChar(inputChar) {
+			let outputChar;
+
+			if (inputChar === "а") outputChar = "@";
+			else if (inputChar === "б") outputChar = "6";
+			else if (inputChar === "в") outputChar = "B";
+			else if (inputChar === "г") outputChar = "|¯";
+			else if (inputChar === "д") outputChar = "d";
+			else if (inputChar === "е") outputChar = "Ԑ";
+			// else if (inputChar === "ё") outputChar = "ё";
+			else if (inputChar === "ё") outputChar = "Ԑ";
+			else if (inputChar === "ж") outputChar = ")|(";
+			else if (inputChar === "з") outputChar = "3";
+			else if (inputChar === "и") outputChar = "N";
+			// else if (inputChar === "й") outputChar = "й";
+			else if (inputChar === "й") outputChar = "N";
+			else if (inputChar === "к") outputChar = "k";
+			else if (inputChar === "л") outputChar = "/\\";
+			else if (inputChar === "м") outputChar = "M";
+			else if (inputChar === "н") outputChar = "H";
+			else if (inputChar === "о") outputChar = "0";
+			else if (inputChar === "п") outputChar = "|¯|";
+			else if (inputChar === "р") outputChar = "P";
+			else if (inputChar === "с") outputChar = "C";
+			else if (inputChar === "т") outputChar = "T";
+			else if (inputChar === "у") outputChar = "Y";
+			else if (inputChar === "ф") outputChar = "(|)";
+			else if (inputChar === "х") outputChar = "X";
+			else if (inputChar === "ц") outputChar = "|_|ˌ";
+			else if (inputChar === "ч") outputChar = "4";
+			else if (inputChar === "ш") outputChar = "|_|_|";
+			else if (inputChar === "щ") outputChar = "|_|_|ˌ";
+			else if (inputChar === "ь") outputChar = "b";
+			else if (inputChar === "ы") outputChar = "b|";
+			else if (inputChar === "ъ") outputChar = "¯b";
+			else if (inputChar === "э") outputChar = "∃";
+			else if (inputChar === "ю") outputChar = "|-O";
+			else if (inputChar === "я") outputChar = "R";
+			else outputChar = inputChar;
+
+			return outputChar;
+		}
+	</script>
+</body>
+</html>
